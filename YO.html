@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>EstateX - Luxury Real Estate</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#0a0a0a;
+  color:white;
+  overflow-x:hidden;
+  font-family:Arial, sans-serif;
+}
+
+/* HERO BACKGROUND ANIMATION */
+.hero{
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  padding:20px;
+}
+
+/* GLOW BUTTON */
+.glow-btn{
+  background:white;
+  color:black;
+  padding:15px 35px;
+  border-radius:50px;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+.glow-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 40px rgba(255,255,255,0.9);
+}
+
+/* PROPERTY CARDS */
+.properties{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  padding:80px;
+}
+
+.card{
+  background:#111;
+  border-radius:25px;
+  overflow:hidden;
+  transition:0.5s;
+  position:relative;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 40px rgba(255,255,255,0.15);
+}
+
+.card img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+}
+
+.card-content{
+  padding:25px;
+}
+
+.price{
+  color:#4ade80;
+  font-size:25px;
+  font-weight:bold;
+}
+
+.badge{
+  position:absolute;
+  top:20px;
+  left:20px;
+  background:#22c55e;
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+/* COUNTER SECTION */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  padding:60px;
+}
+
+.stat-box{
+  background:#111;
+  padding:40px;
+  text-align:center;
+  border-radius:20px;
+  transition:0.3s;
+}
+
+.stat-box:hover{
+  transform:scale(1.05);
+  background:#1a1a1a;
+}
+
+.number{
+  font-size:50px;
+  font-weight:bold;
+}
+
+/* FLOATING BUTTON */
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#25d366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  color:white;
+  text-decoration:none;
+  z-index:1000;
+  box-shadow:0 0 25px rgba(37,211,102,0.8);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.1);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* TESTIMONIALS */
+.testimonials{
+  padding:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.testimonial{
+  background:#111;
+  padding:30px;
+  border-radius:20px;
+}
+
+.stars{
+  color:gold;
+  margin-bottom:15px;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+}
+
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 50px;
+}
+
+.nav-links a{
+  margin-left:25px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#4ade80;
+}
+
+.section-title{
+  text-align:center;
+  font-size:50px;
+  margin-top:60px;
+  margin-bottom:20px;
+}
+
+/* SEARCH BAR */
+.search-box{
+  background:white;
+  padding:10px;
+  border-radius:60px;
+  display:flex;
+  gap:10px;
+  margin-top:30px;
+  width:90%;
+  max-width:800px;
+}
+
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  padding:15px;
+  border-radius:50px;
+  font-size:16px;
+}
+
+.search-box button{
+  background:black;
+  color:white;
+  border:none;
+  padding:15px 30px;
+  border-radius:50px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  padding:40px;
+  text-align:center;
+  background:#050505;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <h1 class="text-3xl font-bold">EstateX</h1>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#properties">Properties</a>
+      <a href="#stats">Stats</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-modern-house-exterior-1564131769885?download=1080p" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+
+    <h1 class="text-7xl font-bold mb-5">
+      Luxury Living Starts Here
+    </h1>
+
+    <p class="text-xl text-gray-300 max-w-2xl">
+      Explore premium villas, penthouses, and dream homes in India's top cities.
+    </p>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <input type="text" placeholder="Search by city, property, or budget">
+      <button>Search</button>
+    </div>
+
+    <button class="glow-btn mt-8">
+      Explore Properties
+    </button>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<h2 class="section-title" id="stats">Our Achievements</h2>
+
+<section class="stats">
+
+  <div class="stat-box">
+    <div class="number">500+</div>
+    <p>Luxury Homes</p>
+  </div>
+
+  <div class="stat-box">
+    <div class="number">1200+</div>
+    <p>Happy Clients</p>
+  </div>
+
+  <div class="stat-box">
+    <div class="number">15+</div>
+    <p>Cities Covered</p>
+  </div>
+
+  <div class="stat-box">
+    <div class="number">98%</div>
+    <p>Client Satisfaction</p>
+  </div>
+
+</section>
+
+<!-- PROPERTIES -->
+<h2 class="section-title" id="properties">Featured Properties</h2>
+
+<section class="properties">
+
+  <div class="card">
+
+    <div class="badge">NEW</div>
+
+    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="card-content">
+
+      <h2 class="text-3xl font-bold mb-2">
+        Ocean View Villa
+      </h2>
+
+      <p class="text-gray-400 mb-4">
+        Goa, India
+      </p>
+
+      <div class="price mb-4">
+        ₹7.2 Cr
+      </div>
+
+      <div class="flex justify-between text-gray-300 mb-5">
+        <span><i class="fa-solid fa-bed"></i> 4 Beds</span>
+        <span><i class="fa-solid fa-bath"></i> 3 Baths</span>
+        <span><i class="fa-solid fa-ruler"></i> 4200 sqft</span>
+      </div>
+
+      <button class="glow-btn w-full">
+        View Details
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card">
+
+    <div class="badge">HOT</div>
+
+    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d936f?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="card-content">
+
+      <h2 class="text-3xl font-bold mb-2">
+        Skyline Penthouse
+      </h2>
+
+      <p class="text-gray-400 mb-4">
+        Mumbai, India
+      </p>
+
+      <div class="price mb-4">
+        ₹4.8 Cr
+      </div>
+
+      <div class="flex justify-between text-gray-300 mb-5">
+        <span><i class="fa-solid fa-bed"></i> 5 Beds</span>
+        <span><i class="fa-solid fa-bath"></i> 4 Baths</span>
+        <span><i class="fa-solid fa-ruler"></i> 5200 sqft</span>
+      </div>
+
+      <button class="glow-btn w-full">
+        View Details
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card">
+
+    <div class="badge">SALE</div>
+
+    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="card-content">
+
+      <h2 class="text-3xl font-bold mb-2">
+        Modern Family Home
+      </h2>
+
+      <p class="text-gray-400 mb-4">
+        Pune, India
+      </p>
+
+      <div class="price mb-4">
+        ₹2.1 Cr
+      </div>
+
+      <div class="flex justify-between text-gray-300 mb-5">
+        <span><i class="fa-solid fa-bed"></i> 3 Beds</span>
+        <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+        <span><i class="fa-solid fa-ruler"></i> 3200 sqft</span>
+      </div>
+
+      <button class="glow-btn w-full">
+        View Details
+      </button>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+<h2 class="section-title" id="reviews">Client Reviews</h2>
+
+<section class="testimonials">
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>
+      EstateX helped me buy my dream villa in Goa.
+      The experience was smooth and professional.
+    </p>
+    <h3 class="mt-5 font-bold">
+      - Rahul Sharma
+    </h3>
+  </div>
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>
+      Best luxury real estate platform I have ever used.
+      Highly recommended.
+    </p>
+    <h3 class="mt-5 font-bold">
+      - Priya Verma
+    </h3>
+  </div>
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>
+      Amazing support team and beautiful premium properties.
+    </p>
+    <h3 class="mt-5 font-bold">
+      - Arjun Mehta
+    </h3>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="py-24 text-center" id="contact">
+
+  <h2 class="text-5xl font-bold mb-5">
+    Ready To Find Your Dream Home?
+  </h2>
+
+  <p class="text-gray-400 mb-10">
+    Contact our luxury real estate experts today.
+  </p>
+
+  <button class="glow-btn">
+    Contact Us
+  </button>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 EstateX Real Estate. All Rights Reserved.
+</footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="#">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
